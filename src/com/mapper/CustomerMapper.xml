@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CustomerMapper">
+    <select id="findCustomerById" parameterType="Integer" resultType="com.po.Customer">
+        select * from mybatis where id = #{id}
+    </select>
+    <select id="findCustomerByName" parameterType="String" resultType="com.po.Customer">
+        select * from mybatis where username like '%${value}%'
+    </select>
+    <insert id="addCustomer" parameterType="com.po.Customer">
+        insert into mybatis(username,jobs,phone) values (#{username},#{jobs},#{phone})
+    </insert>
+    <update id="updateCustomer" parameterType="com.po.Customer">
+        update mybatis set username=#{username},jobs=#{jobs},phone=#{phone} where id=#{id}
+    </update>
+    <delete id="deleteCustomer" parameterType="com.po.Customer">
+        delete from mybatis where id=#{id}
+    </delete>
+</mapper>
